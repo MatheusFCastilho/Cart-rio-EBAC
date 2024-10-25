@@ -10,6 +10,8 @@ int registro()
 	char NOME[40];
 	char SOBRENOME[40];
 	char CARGO[40];
+	int opcao=0;
+	int laco=1;
 	
 	printf("DIGITE O CPF DO USÁRIO A SER CADASTRADO: ");
 	scanf("%s", CPF);
@@ -54,6 +56,32 @@ int registro()
 	fprintf(file,CARGO);
 	fclose(file);
 	
+	printf("\nGostaria de adicionar mais usuários?\n");
+	printf("\n[1]SIM | [2]NÃO\n");
+	printf("\nOPÇÃO SELECIONADA: ");
+	
+	scanf("%d", &opcao);//armazena a resposta do usuário
+
+	system("cls");//limpa a tela
+	
+	switch(opcao)//sistema para validar a escolha do usuário
+	{
+		case 1://caso escolha 1
+		registro();
+		break;
+		
+		case 2://caso escolha 2
+		printf("\nRETORNANDO PARA O MENU INICIAL\n\n");
+		int main();
+		break;
+		
+		default://caso a escolha não seja nem 1 nem 2
+		printf("\nESSA OPÇÃO NÃO EXISTE, RETORNANDO PARA O MENU INICIAL\n\n");
+		int main();
+		break;
+	}
+	
+	
 	system("pause");
 }
 
@@ -64,6 +92,8 @@ int consulta()
 	
 	char CPF[40];
 	char conteudo[200];
+	int laco=1;
+	int opcao=0;
 	
 	printf("DIGITE O CPF PARA CONSULTA: ");
 	scanf("%s", CPF);
@@ -74,13 +104,51 @@ int consulta()
 	if(file == NULL)
 	{
 		printf("NÃO FOI POSSÍVEL ENCONTRAR ESSE CPF CADASTRADO\n");
+		printf("\nDESEJA TENTAR NOVAMENTE?\n");
+		printf("[1]SIM | [2]NÃO\n");
+		printf("\nOPÇÃO SELECIONADA: ");
+		
+		scanf("%d", &opcao);
+		system("cls");
+		
+		switch(opcao)
+		{
+			case 1:
+			consulta();
+			break;
+			
+			case 2:
+			printf("\nRETORNANDO PARA O MENU PRINCIPAL\n\n");
+			break;
+		}
 	}
 	
 	while(fgets(conteudo, 200, file) != NULL)
 	{
 		printf("\nCADASTRO LOCALIZADO, INFORMAÇÕES ABAIXO:\n\n");
 		printf("%s", conteudo);
-		printf("\n\n");
+		printf("\n\nDESEJA CONSULTAR OUTRO USUÁRIO?\n");
+		printf("\n[1]SIM | [2]NÃO\n");
+		printf("\nOPÇÃO SELECIONADA: ");
+		
+		scanf("%d", &opcao);
+		
+		system("cls");
+		
+		switch(opcao)
+		{
+			case 1:
+			consulta();
+			break;
+			
+			case 2:
+			printf("\nRETORNANDO PARA O MENU PRINCIPAL\n\n");
+			break;	
+			
+			default:
+			printf("\nESSA OPÇÃO NÃO EXISTE, RETORNANDO PARA O MENU INICIAL\n\n");
+			break;
+		}
 	}
 	
 	system("pause");
@@ -90,6 +158,9 @@ int consulta()
 int deletar()
 {
 	char CPF[40];
+	int laco=1;
+	int opcao=0;
+	
 	
 	printf("DIGITE O CPF DO USUÁRIO A SER DELETADO: ");
 	scanf("%s", CPF);
@@ -101,8 +172,11 @@ int deletar()
 	
 	if(file == NULL);
 	{
-		printf("\nO CPF INFORMADO NÃO ESTÁ CADASTRADO NO SISTEMA!\n\n");
+		printf("\nNÃO ENCONTRADO NO SISTEMA\n");
+		printf("\nTENTE OUTRO CPF\n");
 		system("pause");
+		system("cls");
+		int main();
 	}
 	
 }
