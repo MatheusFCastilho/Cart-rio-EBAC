@@ -127,7 +127,7 @@ int main()
 		printf("\t[1] Registrar novo usuário\n");
 		printf("\t[2] Consultar usuários\n");
 		printf("\t[3] Deletar usuário\n");
-		printf("\t[4] Sair\n\n");
+		printf("\t[4] Sair do sistema\n\n");
 		printf("Opção desejada: ");
 		
 		scanf("%d", &opcao); //coletando a resposta do usuário
@@ -149,8 +149,8 @@ int main()
 			break;
 			
 			case 4:
-			printf("VOCE DESEJA MESMO SAIR DO PROGRAMA?\n\n");
-			system("pause");
+			printf("Obrigado por utilizar o sistema!\n\n");
+			return 0;
 			break;
 			
 			default:
